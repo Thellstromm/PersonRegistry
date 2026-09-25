@@ -15,7 +15,7 @@ namespace PersonRegistry
 
         public Company Company { get; set; }
 
-        public Person(int id string name string email Address address Company company)
+        public Person(int id, string name, string email, Address address, Company company)
         {
             Id = id;
             Name = name;
