@@ -14,5 +14,14 @@ namespace PersonRegistry
         public Address Address { get; set; }
 
         public Company Company { get; set; }
+
+        public Person(int id string name string email Address address Company company)
+        {
+            Id = id;
+            Name = name;
+            Email = email;
+            Address = address;
+            Company = company;
+        }
     }
 }
