@@ -6,12 +6,18 @@ namespace PersonRegistry
 {
     internal class InteractiveUi
     {
+
+        private readonly PersonService _service;
+        public InteractiveUi(PersonService service)
+        {
+            _service = service;
+        }
         public void DisplayText(string text)
         {
             Console.WriteLine(text);
         }
 
-        public string ReadInput() 
+        public string ReadInput()
         {
             string input = Console.ReadLine() ?? "";
             return input;
@@ -29,6 +35,20 @@ namespace PersonRegistry
             DisplayText("Q: Quit");
             DisplayText("");
             DisplayText("Choose an option (1-6 or Q to quit):");
+        }
+
+        public void DisplayPersonList(List<Person> people)
+        {
+            foreach (Person person in people)
+            {
+
+                DisplayText($"ID: {person.Id}\n" +
+                    $"Name: {person.Name}\n" +
+                    $"Email: {person.Email}\n" +
+                    $"Address: {person.Address.Street}, {person.Address.PostalCode} {person.Address.City}\n" +
+                    $"Company: {person.Company.Name} - {person.Company.Slogan}" +
+                    $"\n------------------------------------------------------------");
+            }
         }
         public void Run()
         {
