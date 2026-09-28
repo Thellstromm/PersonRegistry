@@ -56,6 +56,56 @@ namespace PersonRegistry
         }
         public void Run()
         {
+            bool run = true;
+
+            while (run)
+            {
+
+                ShowMenu();
+
+                string input = ReadInput();
+
+                switch (input)
+                {
+                    case "1":
+                        List<Person> sortedId = _service.GetAllSortedById();
+                        DisplayPersonList(sortedId);
+                        break;
+
+                    case "2":
+                        List<Person> sortedTop5Id = _service.GetTop5SortedById();
+                        DisplayPersonList(sortedTop5Id);
+                        break;
+
+                    case "3":
+                        List<Person> sortedName = _service.GetAllSortedByName();
+                        DisplayPersonList(sortedName);
+                        break;
+
+                    case "4":
+                        List<Person> sortedTop5Name = _service.GetTop5SortedByName();
+                        DisplayPersonList(sortedTop5Name);
+                        break;
+
+                    case "5":
+                        DisplayText("------------------------------------------------------------");
+                        DisplayText("Search for Person: ");
+                        string search = ReadInput();
+                        List<Person> SearchedByName = _service.SearchByName(search);
+                        DisplayPersonList(SearchedByName);
+                        break;
+                    case "q":
+                    case "Q":
+                        run = false;
+                        break;
+
+                    default:
+                        DisplayText("Invalid input, please enter a valid input: ");
+                        break;
+                }
+            }
+
+                
 
         }
 

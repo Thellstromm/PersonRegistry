@@ -6,9 +6,11 @@
         {
             //UI → Service → DataStore → Modeller
 
+            PersonDataStore storage = new PersonDataStore();
+            PersonService service = new PersonService(storage);
+            InteractiveUi ui = new InteractiveUi(service);
 
-            var ui = new InteractiveUi();
-            ui.ShowMenu();
+            ui.Run(); 
         }
     }
 }
