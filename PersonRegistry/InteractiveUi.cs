@@ -17,6 +17,11 @@ namespace PersonRegistry
             Console.WriteLine(text);
         }
 
+        public void PressKey()
+        {
+            Console.ReadKey();
+        }
+
         public string ReadInput()
         {
             string input = Console.ReadLine() ?? "";
@@ -79,7 +84,7 @@ namespace PersonRegistry
                         List<Person> sortedId = _service.GetAllSortedById();
                         DisplayPersonList(sortedId);
                         DisplayText("Press any key to continue...");
-                        Console.ReadKey();
+                        PressKey();
                         ShowMenu();
                         break;
 
@@ -87,7 +92,7 @@ namespace PersonRegistry
                         List<Person> sortedTop5Id = _service.GetTop5SortedById();
                         DisplayPersonList(sortedTop5Id);
                         DisplayText("Press any key to continue...");
-                        Console.ReadKey();
+                        PressKey();
                         ShowMenu();
                         break;
 
@@ -95,7 +100,7 @@ namespace PersonRegistry
                         List<Person> sortedName = _service.GetAllSortedByName();
                         DisplayPersonList(sortedName);
                         DisplayText("Press any key to continue...");
-                        Console.ReadKey();
+                        PressKey();
                         ShowMenu();
                         break;
 
@@ -103,7 +108,7 @@ namespace PersonRegistry
                         List<Person> sortedTop5Name = _service.GetTop5SortedByName();
                         DisplayPersonList(sortedTop5Name);
                         DisplayText("Press any key to continue...");
-                        Console.ReadKey();
+                        PressKey();
                         ShowMenu();
                         break;
 
@@ -114,7 +119,7 @@ namespace PersonRegistry
                         List<Person> SearchedByName = _service.SearchByName(search);
                         DisplayPersonList(SearchedByName);
                         DisplayText("Press any key to continue...");
-                        Console.ReadKey();
+                        PressKey();
                         ShowMenu();
                         break;
                     case "q":
