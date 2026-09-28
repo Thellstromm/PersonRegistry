@@ -41,14 +41,18 @@ namespace PersonRegistry
         {
             foreach (Person person in people)
             {
+                DisplayPerson(person);
+            }
+        }
 
-                DisplayText($"ID: {person.Id}\n" +
+        public void DisplayPerson(Person person)
+        {
+            DisplayText($"ID: {person.Id}\n" +
                     $"Name: {person.Name}\n" +
                     $"Email: {person.Email}\n" +
                     $"Address: {person.Address.Street}, {person.Address.PostalCode} {person.Address.City}\n" +
                     $"Company: {person.Company.Name} - {person.Company.Slogan}" +
                     $"\n------------------------------------------------------------");
-            }
         }
         public void Run()
         {
