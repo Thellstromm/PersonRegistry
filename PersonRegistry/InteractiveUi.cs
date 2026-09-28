@@ -39,9 +39,17 @@ namespace PersonRegistry
 
         public void DisplayPersonList(List<Person> people)
         {
-            foreach (Person person in people)
+            if (people.Count == 0)
             {
-                DisplayPerson(person);
+                DisplayText("No results found");
+            }
+            else
+            {
+                DisplayText("");
+                foreach (Person person in people)
+                {
+                    DisplayPerson(person);
+                }
             }
         }
 
@@ -58,10 +66,10 @@ namespace PersonRegistry
         {
             bool run = true;
 
+            ShowMenu();
+
             while (run)
             {
-
-                ShowMenu();
 
                 string input = ReadInput();
 
@@ -70,21 +78,33 @@ namespace PersonRegistry
                     case "1":
                         List<Person> sortedId = _service.GetAllSortedById();
                         DisplayPersonList(sortedId);
+                        DisplayText("Press any key to continue...");
+                        Console.ReadKey();
+                        ShowMenu();
                         break;
 
                     case "2":
                         List<Person> sortedTop5Id = _service.GetTop5SortedById();
                         DisplayPersonList(sortedTop5Id);
+                        DisplayText("Press any key to continue...");
+                        Console.ReadKey();
+                        ShowMenu();
                         break;
 
                     case "3":
                         List<Person> sortedName = _service.GetAllSortedByName();
                         DisplayPersonList(sortedName);
+                        DisplayText("Press any key to continue...");
+                        Console.ReadKey();
+                        ShowMenu();
                         break;
 
                     case "4":
                         List<Person> sortedTop5Name = _service.GetTop5SortedByName();
                         DisplayPersonList(sortedTop5Name);
+                        DisplayText("Press any key to continue...");
+                        Console.ReadKey();
+                        ShowMenu();
                         break;
 
                     case "5":
@@ -93,6 +113,9 @@ namespace PersonRegistry
                         string search = ReadInput();
                         List<Person> SearchedByName = _service.SearchByName(search);
                         DisplayPersonList(SearchedByName);
+                        DisplayText("Press any key to continue...");
+                        Console.ReadKey();
+                        ShowMenu();
                         break;
                     case "q":
                     case "Q":
@@ -100,12 +123,12 @@ namespace PersonRegistry
                         break;
 
                     default:
-                        DisplayText("Invalid input, please enter a valid input: ");
+                        DisplayText("Invalid input, Please enter a valid input: ");
                         break;
                 }
             }
 
-                
+
 
         }
 
