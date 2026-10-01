@@ -67,6 +67,51 @@ namespace PersonRegistry
                     $"Company: {person.Company.Name} - {person.Company.Slogan}" +
                     $"\n------------------------------------------------------------");
         }
+
+        private void ShowAllSortedById()
+        {
+            List<Person> sortedId = _service.GetAllSortedById();
+            DisplayPersonList(sortedId);
+            DisplayText("Press any key to continue...");
+            PressKey();
+            ShowMenu();
+        }
+        private void ShowTop5SortedById()
+        {
+            List<Person> sortedTop5Id = _service.GetTop5SortedById();
+            DisplayPersonList(sortedTop5Id);
+            DisplayText("Press any key to continue...");
+            PressKey();
+            ShowMenu();
+        }
+        private void ShowAllSortedByName()
+        {
+            List<Person> sortedName = _service.GetAllSortedByName();
+            DisplayPersonList(sortedName);
+            DisplayText("Press any key to continue...");
+            PressKey();
+            ShowMenu();
+        }
+        private void ShowTop5SortedByName()
+        {
+            List<Person> sortedTop5Name = _service.GetTop5SortedByName();
+            DisplayPersonList(sortedTop5Name);
+            DisplayText("Press any key to continue...");
+            PressKey();
+            ShowMenu();
+        }
+
+        private void ShowSearchByName()
+        {
+            DisplayText("------------------------------------------------------------");
+            DisplayText("Search for Person: ");
+            string search = ReadInput();
+            List<Person> SearchedByName = _service.SearchByName(search);
+            DisplayPersonList(SearchedByName);
+            DisplayText("Press any key to continue...");
+            PressKey();
+            ShowMenu();
+        }
         public void Run()
         {
             bool run = true;
@@ -81,46 +126,23 @@ namespace PersonRegistry
                 switch (input)
                 {
                     case "1":
-                        List<Person> sortedId = _service.GetAllSortedById();
-                        DisplayPersonList(sortedId);
-                        DisplayText("Press any key to continue...");
-                        PressKey();
-                        ShowMenu();
+                        ShowAllSortedById();
                         break;
 
                     case "2":
-                        List<Person> sortedTop5Id = _service.GetTop5SortedById();
-                        DisplayPersonList(sortedTop5Id);
-                        DisplayText("Press any key to continue...");
-                        PressKey();
-                        ShowMenu();
+                        ShowTop5SortedById();
                         break;
 
                     case "3":
-                        List<Person> sortedName = _service.GetAllSortedByName();
-                        DisplayPersonList(sortedName);
-                        DisplayText("Press any key to continue...");
-                        PressKey();
-                        ShowMenu();
+                        ShowAllSortedByName();
                         break;
 
                     case "4":
-                        List<Person> sortedTop5Name = _service.GetTop5SortedByName();
-                        DisplayPersonList(sortedTop5Name);
-                        DisplayText("Press any key to continue...");
-                        PressKey();
-                        ShowMenu();
+                        ShowTop5SortedByName();
                         break;
 
                     case "5":
-                        DisplayText("------------------------------------------------------------");
-                        DisplayText("Search for Person: ");
-                        string search = ReadInput();
-                        List<Person> SearchedByName = _service.SearchByName(search);
-                        DisplayPersonList(SearchedByName);
-                        DisplayText("Press any key to continue...");
-                        PressKey();
-                        ShowMenu();
+                        ShowSearchByName();
                         break;
                     case "q":
                     case "Q":
