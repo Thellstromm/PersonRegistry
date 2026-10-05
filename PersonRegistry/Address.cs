@@ -6,11 +6,11 @@ namespace PersonRegistry
 {
     internal class Address
     {
-        public string Street { get; set; }
+        public string Street { get; private set; }
 
-        public string PostalCode { get; set; }
+        public string PostalCode { get; private set; }
 
-        public string City { get; set; }
+        public string City { get; private set; }
         public Address(string street, string postalCode, string city)
         {
             Street = street;

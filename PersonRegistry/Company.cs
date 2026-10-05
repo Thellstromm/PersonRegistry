@@ -6,9 +6,9 @@ namespace PersonRegistry
 {
     internal class Company
     {
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
-        public string Slogan { get; set; }
+        public string Slogan { get; private set; }
 
         public Company(string name, string slogan)
         {

@@ -12,23 +12,23 @@ namespace PersonRegistry
         {
             _service = service;
         }
-        public void DisplayText(string text)
+        private void DisplayText(string text)
         {
             Console.WriteLine(text);
         }
 
-        public void PressKey()
+        private void PressKey()
         {
             Console.ReadKey();
         }
 
-        public string ReadInput()
+        private string ReadInput()
         {
             string input = Console.ReadLine() ?? "";
             return input;
         }
 
-        public void ShowMenu()
+        private void ShowMenu()
         {
             DisplayText("Person Registry");
             DisplayText("-----------------");
@@ -42,7 +42,7 @@ namespace PersonRegistry
             DisplayText("Choose an option (1-6 or Q to quit):");
         }
 
-        public void DisplayPersonList(List<Person> people)
+        private void DisplayPersonList(List<Person> people)
         {
             if (people.Count == 0)
             {
@@ -58,7 +58,7 @@ namespace PersonRegistry
             }
         }
 
-        public void DisplayPerson(Person person)
+        private void DisplayPerson(Person person)
         {
             DisplayText($"ID: {person.Id}\n" +
                     $"Name: {person.Name}\n" +
