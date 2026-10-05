@@ -6,6 +6,10 @@ namespace PersonRegistry
 {
     internal class PersonDataStore
     {
+        /// <summary>
+        /// returns a list of type Person that includes 10 diffrent people
+        /// </summary>
+        /// <returns></returns>
         public List<Person> GetPeople()
         {
             Company company1 = new Company("Nordic Tech AB", "Building the future, one line at a time.");

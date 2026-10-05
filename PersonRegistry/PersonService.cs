@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PersonRegistry
 {
+    /// <summary>
+    /// Includes methods that can sort and handle lists of the type Person
+    /// </summary>
     internal class PersonService
     {
         private PersonDataStore _personDataStore;
@@ -14,6 +17,9 @@ namespace PersonRegistry
             _personDataStore = personDataStore;
         }
 
+        /// <summary>
+        /// Works as a rule to use in Lists Sort() method, so it can sort by ther Persons Id
+        /// </summary>
         private static int CompareById(Person a, Person b)
         {
             return a.Id.CompareTo(b.Id);
@@ -39,6 +45,9 @@ namespace PersonRegistry
             }
             return top5ById;
         }
+        /// <summary>
+        /// Works as a rule to use in Lists Sort() method, so it can sort by ther Persons name
+        /// </summary>
         private static int CompareByName(Person a, Person b)
         {
             return a.Name.CompareTo(b.Name);
