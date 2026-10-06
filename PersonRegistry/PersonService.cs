@@ -27,13 +27,7 @@ namespace PersonRegistry
         public List<Person> GetTop5SortedById()
         {
             List<Person> people = GetAllSortedById();
-            List<Person> top5ById = new List<Person>();
-
-            int count = Math.Min(5, people.Count); // If the list is less than 5 it makes sure the loop only loops for how long the list is. 
-            for(int i = 0; i < count; i++)
-            {
-                top5ById.Add(people[i]);
-            }
+            List<Person> top5ById = people.Take(5).ToList();
             return top5ById;
         }
         public List<Person> GetAllSortedByName()
@@ -45,13 +39,7 @@ namespace PersonRegistry
         public List<Person> GetTop5SortedByName()
         {
             List<Person> people = GetAllSortedByName();
-            List<Person> top5ByName = new List<Person>();
-
-            int count = Math.Min(5, people.Count); // If the list is less than 5 it makes sure the loop only loops for how long the list is. 
-            for (int i = 0; i < count; i++)
-            {
-                top5ByName.Add(people[i]);
-            }
+            List<Person> top5ByName = people.Take(5).ToList();
             return top5ByName;
         }
         public List<Person> SearchByName(string searchText)
