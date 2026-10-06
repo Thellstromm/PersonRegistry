@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            //UI → Service → DataStore → Modeller
+            //UI → Service → DataStore → Models
 
             PersonDataStore storage = new PersonDataStore();
             PersonService service = new PersonService(storage);

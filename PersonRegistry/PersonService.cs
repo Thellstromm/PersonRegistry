@@ -24,24 +24,28 @@ namespace PersonRegistry
             return sorted;
 
         }
+
         public List<Person> GetTop5SortedById()
         {
             List<Person> people = GetAllSortedById();
             List<Person> top5ById = people.Take(5).ToList();
             return top5ById;
         }
+
         public List<Person> GetAllSortedByName()
         {
             List<Person> people = _personDataStore.GetPeople();
             var sorted = people.OrderBy(person => person.Name).ToList();
             return sorted;
         }
+
         public List<Person> GetTop5SortedByName()
         {
             List<Person> people = GetAllSortedByName();
             List<Person> top5ByName = people.Take(5).ToList();
             return top5ByName;
         }
+
         public List<Person> SearchByName(string searchText)
         {
             List<Person> people = _personDataStore.GetPeople();
