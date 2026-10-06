@@ -17,19 +17,10 @@ namespace PersonRegistry
             _personDataStore = personDataStore;
         }
 
-        /// <summary>
-        /// Works as a rule to use in Lists Sort() method, so it can sort by ther Persons Id
-        /// </summary>
-        private static int CompareById(Person a, Person b)
-        {
-            return a.Id.CompareTo(b.Id);
-        }
-
         public List<Person> GetAllSortedById()
         {
             List<Person> people = _personDataStore.GetPeople();
-            List<Person> sorted = new List<Person>(people); // Copy list because list ís a refrence type (even though the method GetPeople() always makes a new list, so its not neccesary here even tho its good practice to do so)
-            sorted.Sort(CompareById);
+            var sorted = people.OrderBy(person => person.Id).ToList();
             return sorted;
 
         }
@@ -45,18 +36,10 @@ namespace PersonRegistry
             }
             return top5ById;
         }
-        /// <summary>
-        /// Works as a rule to use in Lists Sort() method, so it can sort by ther Persons name
-        /// </summary>
-        private static int CompareByName(Person a, Person b)
-        {
-            return a.Name.CompareTo(b.Name);
-        }
         public List<Person> GetAllSortedByName()
         {
             List<Person> people = _personDataStore.GetPeople();
-            List<Person> sorted = new List<Person>(people); // Copy list because list ís a refrence type (even though the method GetPeople() always makes a new list, so its not neccesary here even tho its good practice to do so)
-            sorted.Sort(CompareByName);
+            var sorted = people.OrderBy(person => person.Name).ToList();
             return sorted;
         }
         public List<Person> GetTop5SortedByName()
@@ -74,18 +57,7 @@ namespace PersonRegistry
         public List<Person> SearchByName(string searchText)
         {
             List<Person> people = _personDataStore.GetPeople();
-            List<Person> match = new List<Person>();
-        
-
-            foreach (Person person in people)
-            {
-                if (person.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase))
-                {
-                    match.Add(person);
-                }
-            }
-
-            match.Sort(CompareById);
+            var match = people.Where(person => person.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase)).OrderBy(person => person.Id).ToList();
             return match;
 
         }
