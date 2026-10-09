@@ -11,20 +11,23 @@ namespace PersonRegistry
     {
         public string Street { get; private set; }
 
-        public string PostalCode { get; private set; }
+        public string Zipcode { get; private set; }
 
         public string City { get; private set; }
+
+        
+
 
         /// <summary>
         /// Creates an Address with a street, postal code and a city.
         /// </summary>
         /// <param name="street">Street name and number.</param>
-        /// <param name="postalCode">The address postal code.</param>
+        /// <param name="zipcode">The address postal code.</param>
         /// <param name="city">The city where the address is located.</param>
-        public Address(string street, string postalCode, string city)
+        public Address(string street, string zipcode, string city)
         {
             Street = street;
-            PostalCode = postalCode;
+            Zipcode = zipcode;
             City = city;
         }
     }

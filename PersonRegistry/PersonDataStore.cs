@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PersonRegistry
 {
-    internal class PersonDataStore
+    internal class PersonDataStore : IPersonDataStore
     {
         /// <summary>
         /// returns a list of type Person that includes 10 diffrent people

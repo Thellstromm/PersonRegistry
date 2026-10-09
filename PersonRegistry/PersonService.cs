@@ -10,9 +10,9 @@ namespace PersonRegistry
     /// </summary>
     internal class PersonService
     {
-        private PersonDataStore _personDataStore;
+        private IPersonDataStore _personDataStore;
 
-        public PersonService(PersonDataStore personDataStore)
+        public PersonService(IPersonDataStore personDataStore)
         {
             _personDataStore = personDataStore;
         }

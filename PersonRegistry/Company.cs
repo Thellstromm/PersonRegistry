@@ -11,17 +11,19 @@ namespace PersonRegistry
     {
         public string Name { get; private set; }
 
-        public string Slogan { get; private set; }
+        public string CatchPhrase { get; private set; }
+
+        
 
         /// <summary>
         /// Creates a company with a name and a slogan
         /// </summary>
         /// <param name="name">Name of the company</param>
-        /// <param name="slogan">The companys slogan</param>
-        public Company(string name, string slogan)
+        /// <param name="catchPhrase">The companys slogan</param>
+        public Company(string name, string catchPhrase)
         {
             Name = name;
-            Slogan = slogan;
+            CatchPhrase = catchPhrase;
         }
     }
 }

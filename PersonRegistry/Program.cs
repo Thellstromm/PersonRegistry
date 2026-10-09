@@ -1,4 +1,6 @@
-﻿namespace PersonRegistry
+﻿
+
+namespace PersonRegistry
 {
     internal class Program
     {
@@ -6,7 +8,7 @@
         {
             //UI → Service → DataStore → Models
 
-            PersonDataStore storage = new PersonDataStore();
+            IPersonDataStore storage = new JsonPersonDataStore();
             PersonService service = new PersonService(storage);
             InteractiveUi ui = new InteractiveUi(service);
 

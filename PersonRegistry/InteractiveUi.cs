@@ -63,8 +63,8 @@ namespace PersonRegistry
             DisplayText($"ID: {person.Id}\n" +
                     $"Name: {person.Name}\n" +
                     $"Email: {person.Email}\n" +
-                    $"Address: {person.Address.Street}, {person.Address.PostalCode} {person.Address.City}\n" +
-                    $"Company: {person.Company.Name} - {person.Company.Slogan}" +
+                    $"Address: {person.Address.Street}, {person.Address.Zipcode} {person.Address.City}\n" +
+                    $"Company: {person.Company.Name} - {person.Company.CatchPhrase}" +
                     $"\n------------------------------------------------------------");
         }
 

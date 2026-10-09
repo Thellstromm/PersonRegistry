@@ -19,6 +19,7 @@ namespace PersonRegistry
 
         public Company Company { get; private set; }
 
+
         /// <summary>
         /// Creates a Person object with the specified values.
         /// </summary>
