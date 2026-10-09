@@ -8,12 +8,41 @@ namespace PersonRegistry
         {
             //UI → Service → DataStore → Models
 
-            IPersonDataStore storage = ChooseDataStorage();
+            if (args.Length == 0)
+            {
 
-            PersonService service = new PersonService(storage);
-            InteractiveUi ui = new InteractiveUi(service);
+                IPersonDataStore storage = ChooseDataStorage();
 
-            ui.Run();
+                PersonService service = new PersonService(storage);
+                InteractiveUi ui = new InteractiveUi(service);
+
+                ui.Run();
+            }
+
+            else
+            {
+
+                IPersonDataStore storage = new PersonDataStore();
+                PersonService service = new PersonService(storage);
+                InteractiveUi ui = new InteractiveUi(service);
+                if (args[0] == "list" && args[1] == "--top5")
+                {
+                    ui.ShowTop5SortedById();
+                }
+                else if (args[0] == "list" && args[1] == "--sort" && args[2] == "--top5")
+                {
+                    ui.ShowTop5SortedByName();
+                }
+                else if (args[0] == "list" && args[1] == "--sort")
+                {
+                    ui.ShowAllSortedByName();
+                }
+                
+                else if (args[0] == "list")
+                {
+                    ui.ShowAllSortedById();
+                }
+            }
         }
 
         private static IPersonDataStore ChooseDataStorage()

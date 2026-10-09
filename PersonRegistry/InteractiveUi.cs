@@ -68,49 +68,44 @@ namespace PersonRegistry
                     $"\n------------------------------------------------------------");
         }
 
-        private void ShowAllSortedById()
+        public void ShowAllSortedById()
         {
             List<Person> sortedId = _service.GetAllSortedById();
             DisplayPersonList(sortedId);
-            DisplayText("Press any key to continue...");
-            PressKey();
-            ShowMenu();
+            
+            
         }
-        private void ShowTop5SortedById()
+        public void ShowTop5SortedById()
         {
             List<Person> sortedTop5Id = _service.GetTop5SortedById();
             DisplayPersonList(sortedTop5Id);
-            DisplayText("Press any key to continue...");
-            PressKey();
-            ShowMenu();
+            
+            
         }
-        private void ShowAllSortedByName()
+        public void ShowAllSortedByName()
         {
             List<Person> sortedName = _service.GetAllSortedByName();
             DisplayPersonList(sortedName);
-            DisplayText("Press any key to continue...");
-            PressKey();
-            ShowMenu();
+            
+            
         }
-        private void ShowTop5SortedByName()
+        public void ShowTop5SortedByName()
         {
             List<Person> sortedTop5Name = _service.GetTop5SortedByName();
             DisplayPersonList(sortedTop5Name);
-            DisplayText("Press any key to continue...");
-            PressKey();
-            ShowMenu();
+            
+            
         }
 
-        private void ShowSearchByName()
+        public void ShowSearchByName()
         {
             DisplayText("------------------------------------------------------------");
             DisplayText("Search for Person: ");
             string search = ReadInput();
             List<Person> SearchedByName = _service.SearchByName(search);
             DisplayPersonList(SearchedByName);
-            DisplayText("Press any key to continue...");
-            PressKey();
-            ShowMenu();
+            
+            
         }
         public void Run()
         {
@@ -127,22 +122,37 @@ namespace PersonRegistry
                 {
                     case "1":
                         ShowAllSortedById();
+                        DisplayText("Press any key to continue...");
+                        PressKey();
+                        ShowMenu();
                         break;
 
                     case "2":
                         ShowTop5SortedById();
+                        DisplayText("Press any key to continue...");
+                        PressKey();
+                        ShowMenu();
                         break;
 
                     case "3":
                         ShowAllSortedByName();
+                        DisplayText("Press any key to continue...");
+                        PressKey();
+                        ShowMenu();
                         break;
 
                     case "4":
                         ShowTop5SortedByName();
+                        DisplayText("Press any key to continue...");
+                        PressKey();
+                        ShowMenu();
                         break;
 
                     case "5":
                         ShowSearchByName();
+                        DisplayText("Press any key to continue...");
+                        PressKey();
+                        ShowMenu();
                         break;
                     case "q":
                     case "Q":
