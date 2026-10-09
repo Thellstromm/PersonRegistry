@@ -25,22 +25,32 @@ namespace PersonRegistry
                 IPersonDataStore storage = new PersonDataStore();
                 PersonService service = new PersonService(storage);
                 InteractiveUi ui = new InteractiveUi(service);
-                if (args[0] == "list" && args[1] == "--top5")
-                {
-                    ui.ShowTop5SortedById();
-                }
-                else if (args[0] == "list" && args[1] == "--sort" && args[2] == "--top5")
+                if (args.Length == 3 &&
+                    args[0] == "list" &&
+                    args[1] == "--sort" &&
+                    args[2] == "--top5")
                 {
                     ui.ShowTop5SortedByName();
                 }
-                else if (args[0] == "list" && args[1] == "--sort")
+                else if (args.Length == 2 &&
+                         args[0] == "list" &&
+                         args[1] == "--sort")
                 {
                     ui.ShowAllSortedByName();
                 }
-                
-                else if (args[0] == "list")
+                else if (args.Length == 2 &&
+                         args[0] == "list" &&
+                         args[1] == "--top5")
+                {
+                    ui.ShowTop5SortedById();
+                }
+                else if (args.Length == 1 && args[0] == "list")
                 {
                     ui.ShowAllSortedById();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid command or argument.");
                 }
             }
         }
