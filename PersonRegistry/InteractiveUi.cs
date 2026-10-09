@@ -39,7 +39,7 @@ namespace PersonRegistry
             DisplayText("5: Search for a person by name");
             DisplayText("Q: Quit");
             DisplayText("");
-            DisplayText("Choose an option (1-6 or Q to quit):");
+            DisplayText("Choose an option (1-5 or Q to quit):");
         }
 
         private void DisplayPersonList(List<Person> people)
@@ -150,7 +150,7 @@ namespace PersonRegistry
                         break;
 
                     default:
-                        DisplayText("Invalid input, Please enter a valid input: ");
+                        DisplayText("Invalid input. Please enter a valid option: ");
                         break;
                 }
             }
