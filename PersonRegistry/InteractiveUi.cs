@@ -30,8 +30,9 @@ namespace PersonRegistry
 
         private void ShowMenu()
         {
-            DisplayText("Person Registry");
-            DisplayText("-----------------");
+            DisplayText("---------------------------------------------"); 
+            DisplayText("             Person Registry");
+            DisplayText("---------------------------------------------");
             DisplayText("1: Show all persons (sorted by ID)");
             DisplayText("2: Show the first 5 persons (sorted by ID)");
             DisplayText("3: Show all persons (sorted by name)");
@@ -97,11 +98,9 @@ namespace PersonRegistry
             
         }
 
-        public void ShowSearchByName()
+        public void ShowSearchByName(string search)
         {
-            DisplayText("------------------------------------------------------------");
-            DisplayText("Search for Person: ");
-            string search = ReadInput();
+            
             List<Person> SearchedByName = _service.SearchByName(search);
             DisplayPersonList(SearchedByName);
             
@@ -149,7 +148,17 @@ namespace PersonRegistry
                         break;
 
                     case "5":
-                        ShowSearchByName();
+                        DisplayText("------------------------------------------------------------");
+                        DisplayText("Search for Person: ");
+                        string search = ReadInput();
+                        if (string.IsNullOrWhiteSpace(search))
+                        {
+                            Console.WriteLine("Search text cannot be empty");
+                        }
+                        else
+                        {
+                            ShowSearchByName(search);
+                        }
                         DisplayText("Press any key to continue...");
                         PressKey();
                         ShowMenu();

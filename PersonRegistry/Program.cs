@@ -21,48 +21,19 @@ namespace PersonRegistry
 
             else
             {
-
-                IPersonDataStore storage = new PersonDataStore();
-                PersonService service = new PersonService(storage);
-                InteractiveUi ui = new InteractiveUi(service);
-                if (args.Length == 3 &&
-                    args[0] == "list" &&
-                    args[1] == "--sort" &&
-                    args[2] == "--top5")
-                {
-                    ui.ShowTop5SortedByName();
-                }
-                else if (args.Length == 2 &&
-                         args[0] == "list" &&
-                         args[1] == "--sort")
-                {
-                    ui.ShowAllSortedByName();
-                }
-                else if (args.Length == 2 &&
-                         args[0] == "list" &&
-                         args[1] == "--top5")
-                {
-                    ui.ShowTop5SortedById();
-                }
-                else if (args.Length == 1 && args[0] == "list")
-                {
-                    ui.ShowAllSortedById();
-                }
-                else
-                {
-                    Console.WriteLine("Invalid command or argument.");
-                }
+                RunWithArgs(args);
             }
         }
+
 
         private static IPersonDataStore ChooseDataStorage()
         {
             IPersonDataStore storage;
 
-            Console.WriteLine("Chosse DataStorage:\n" +
-                "1. Hardcoded\n" +
-                "2. JsonDatastore\n" +
-                "(Chosse 1 or 2)");
+            Console.WriteLine("Choose data storage:\n" +
+                              "1. Hardcoded\n" +
+                              "2. JSON datastore\n" +
+                              "(Choose 1 or 2)");
             while (true)
             {
                 string input = Console.ReadLine() ?? "";
@@ -78,8 +49,59 @@ namespace PersonRegistry
                 }
                 else
                 {
-                    Console.WriteLine("Inavlid input. Please try again:");
+                    Console.WriteLine("Invalid input. Please try again:");
                 }
+            }
+        }
+        private static void RunWithArgs(string[] args)
+        {
+            IPersonDataStore storage;
+
+            if (args.Contains("--useAltSource"))
+            {
+                storage = new JsonPersonDataStore();
+                args = args.Where(arg => arg != "--useAltSource").ToArray();
+            }
+            else
+            {
+                storage = new PersonDataStore();
+            }
+
+            PersonService service = new PersonService(storage);
+            InteractiveUi ui = new InteractiveUi(service);
+
+            switch (args)
+            {
+                case ["list", "--sort", "--top5"]:
+                    ui.ShowTop5SortedByName();
+                    break;
+
+                case ["list", "--search", var search]:
+                    if (string.IsNullOrWhiteSpace(search))
+                    {
+                        Console.WriteLine("Search text cannot be empty");
+                    }
+                    else
+                    {
+                        ui.ShowSearchByName(search);
+                    }
+                    break;
+
+                case ["list", "--sort"]:
+                    ui.ShowAllSortedByName();
+                    break;
+
+                case ["list", "--top5"]:
+                    ui.ShowTop5SortedById();
+                    break;
+
+                case ["list"]:
+                    ui.ShowAllSortedById();
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid command or argument.");
+                    break;
             }
         }
     }
