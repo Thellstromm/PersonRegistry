@@ -41,3 +41,9 @@ PowerShell är ett kommandoradsverktyg och skriptspråk som används för att by
 ## Förklara commit och branch
 
 I Git är en commit en sparad ändring med en tillhörande kommentar som kort förklarar vad commiten har gjort med koden. En branch är en parallell utvecklingsmiljö där man kan jobba på något nytt utan att det påverkar huvudkoden (main). Man mergar en branch till main när de nya funktionerna ska implementeras och är redo att användas i huvudkoden.
+
+## Utbytbart datalager
+
+Man väljer vilket datalager man vill använda i början av körningen, Om man vill byta får man starta om programmet. För att använda den andra datalagret om man kör med kommando argument använder man kommandot "--useAltSource" som sista argument.
+
+PersonService tar emot ett objekt som implementerar interfacet IPersonDataStore. Både PersonDataStore och JsonPersonDataStore implementerar interfacet. Därför kan PersonService användas med båda datalagren utan att registerfunktionernas kod behöver ändras.
