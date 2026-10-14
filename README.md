@@ -49,11 +49,15 @@ Man väljer vilket datalager man vill använda i början av körningen, Om man v
 För att välja med kommandoradsargument använder man sig av detta:
 
 dotnet run -- list | GetAllSortedById()
+
 dotnet run -- list --top5 | GetTop5SortedById()
+
 dotnet run -- list --sort | GetAllSortedByName()
+
 dotnet run -- list --sort --top5 | GetTop5SortedByName()
+
 dotnet run -- list --search skywalker | SearchByName(string searchText)
 
-För att använda den andra datalagret om man kör med kommandoargument använder man kommandot "--useAltSource" som sista argument.
+För att använda det andra datalagret om man kör med kommandoargument använder man kommandot "--useAltSource" som sista argument.
 
 PersonService tar emot ett objekt som implementerar interfacet IPersonDataStore. Både PersonDataStore och JsonPersonDataStore implementerar interfacet. Därför kan PersonService användas med båda datalagren utan att registerfunktionernas kod behöver ändras.
