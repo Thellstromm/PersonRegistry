@@ -44,6 +44,16 @@ I Git är en commit en sparad ändring med en tillhörande kommentar som kort f�
 
 ## Utbytbart datalager
 
-Man väljer vilket datalager man vill använda i början av körningen, Om man vill byta får man starta om programmet. För att använda den andra datalagret om man kör med kommando argument använder man kommandot "--useAltSource" som sista argument.
+Man väljer vilket datalager man vill använda i början av körningen, Om man vill byta får man starta om programmet.
+
+För att välja med kommandoradsargument använder man sig av detta:
+
+dotnet run -- list | GetAllSortedById()
+dotnet run -- list --top5 | GetTop5SortedById()
+dotnet run -- list --sort | GetAllSortedByName()
+dotnet run -- list --sort --top5 | GetTop5SortedByName()
+dotnet run -- list --search skywalker | SearchByName(string searchText)
+
+För att använda den andra datalagret om man kör med kommandoargument använder man kommandot "--useAltSource" som sista argument.
 
 PersonService tar emot ett objekt som implementerar interfacet IPersonDataStore. Både PersonDataStore och JsonPersonDataStore implementerar interfacet. Därför kan PersonService användas med båda datalagren utan att registerfunktionernas kod behöver ändras.
